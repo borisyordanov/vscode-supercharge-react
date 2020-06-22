@@ -14,6 +14,10 @@
   "categories": [
     "Other"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/borisyordanov/vscode-supercharge-react.git"
+  },
   "activationEvents": [
     "onCommand:sup-react.newComponent",
     "onCommand:sup-react.newPage",

@@ -10,11 +10,26 @@
     "Other"
   ],
   "activationEvents": [
+    "onCommand:sup-react.newComponent",
+    "onCommand:sup-react.newPage",
+    "onCommand:sup-react.newModule",
     "onCommand:sup-react.sup"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
+      {
+        "command": "sup-react.newComponent",
+        "title": "new component"
+      },
+      {
+        "command": "sup-react.newPage",
+        "title": "new page"
+      },
+      {
+        "command": "sup-react.newModule",
+        "title": "new module"
+      },
       {
         "command": "sup-react.sup",
         "title": "Say wassup"

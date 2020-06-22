@@ -6,6 +6,10 @@
   "engines": {
     "vscode": "^1.46.0"
   },
+  "author": {
+    "name": "Boris Yordanov",
+    "email": "boris.yordanov11@yahoo.com"
+  },
   "categories": [
     "Other"
   ],

@@ -21,27 +21,22 @@
   "activationEvents": [
     "onCommand:sup-react.newComponent",
     "onCommand:sup-react.newPage",
-    "onCommand:sup-react.newModule",
-    "onCommand:sup-react.sup"
+    "onCommand:sup-react.newModule"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "sup-react.newComponent",
-        "title": "new component"
+        "title": "New component"
       },
       {
         "command": "sup-react.newPage",
-        "title": "new page"
+        "title": "New page"
       },
       {
         "command": "sup-react.newModule",
-        "title": "new module"
-      },
-      {
-        "command": "sup-react.sup",
-        "title": "Say wassup"
+        "title": "New module"
       }
     ]
   },

@@ -12,11 +12,11 @@ Go to the link below and click `Install`.
 
 Powered by [@toptal/davinci-code](https://www.npmjs.com/package/@toptal/davinci-code), which is part of [Davinci CLI](https://www.npmjs.com/package/@toptal/davinci-code).
 
-| Command       | Output                                                    |
-| ------------- | --------------------------------------------------------- |
-| New Module    | `src/modules/<your-module>`                               |
-| New Component | `src/modules/<your-module>/components/<your-component>` ` |
-| New Page      | `src/modules/<your-module>/pages/<your-component>` `      |
+| Command       | Output                                                  |
+| ------------- | ------------------------------------------------------- |
+| New Module    | `src/modules/<your-module>`                             |
+| New Component | `src/modules/<your-module>/components/<your-component>` |
+| New Page      | `src/modules/<your-module>/pages/<your-component>`      |
 
 Using these commands will generate a folder structure in this format:
 

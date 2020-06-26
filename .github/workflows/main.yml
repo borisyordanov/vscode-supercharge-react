@@ -19,9 +19,13 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
+      - name: "Automated Version Bump"
+        uses: "phips28/gh-action-bump-version@master"
+        with:
+          tag-prefix: ""
       - run: npm install
-      - uses: lannonbr/vsce-action@master
+      - name: "Publish to VSCode marketplace"
+        uses: lannonbr/vsce-action@master
         with:
           args: "publish minor -p $VSCE_TOKEN"
         env:

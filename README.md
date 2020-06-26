@@ -50,3 +50,8 @@ Using these commands will generate a folder structure in this format:
                    ├── index.ts
                    └── style.ts
 ```
+
+## CI
+
+- Version are automatically bumped. Read more [here](https://github.com/marketplace/actions/github-action-for-vsce)
+- [Automatic publishing](https://github.com/marketplace/actions/github-action-for-vsce) when a PR is merged to master thanks

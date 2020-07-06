@@ -8,6 +8,10 @@ Go to the link below and click `Install`.
 
 ## Commands
 
+### Davinci command execution
+
+Running `Execute Davinci command` allows you to run commands available from the [Davinci packages](https://www.npmjs.com/package/@toptal/davinci#packages).
+
 ### Generators
 
 Powered by [@toptal/davinci-code](https://www.npmjs.com/package/@toptal/davinci-code), which is part of [Davinci CLI](https://www.npmjs.com/package/@toptal/davinci-code).

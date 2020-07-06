@@ -36,4 +36,5 @@ const createPage = async () => {
 
   execScript(pageName, selectedModuleName || DEFAULT_MODULE_NAME);
 };
+
 export default createPage;

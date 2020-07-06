@@ -21,7 +21,8 @@
   "activationEvents": [
     "onCommand:sup-react.newComponent",
     "onCommand:sup-react.newPage",
-    "onCommand:sup-react.newModule"
+    "onCommand:sup-react.newModule",
+    "onCommand:sup-react.execDavinci"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -37,6 +38,10 @@
       {
         "command": "sup-react.newModule",
         "title": "New module"
+      },
+      {
+        "command": "sup-react.execDavinci",
+        "title": "Execute Davinci command"
       }
     ]
   },

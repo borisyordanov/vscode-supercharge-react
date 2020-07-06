@@ -1,14 +1,26 @@
+import { DavinciPackageNames } from "../types";
+
+export const runDavinciCommand = (
+  packageName: DavinciPackageNames,
+  command: string,
+  options?: string
+): string => `npx @toptal/davinci ${packageName} ${command} ${options || ""}`;
+
 export const createDavinciModule = (moduleName: string): string =>
-  `npx @toptal/davinci code new module ${moduleName}`;
+  runDavinciCommand("code", `new module`, `${moduleName}`);
 
 export const createDavinciComponent = (
   componentName: string,
   selectedModuleName: string
 ): string =>
-  `npx @toptal/davinci code new component ${componentName} ${selectedModuleName}`;
+  runDavinciCommand(
+    "code",
+    `new component`,
+    `${componentName} ${selectedModuleName}`
+  );
 
 export const createDavinciPage = (
   pageName: string,
   selectedModuleName: string
 ): string =>
-  `npx @toptal/davinci code new page ${pageName} ${selectedModuleName}`;
+  runDavinciCommand("code", `new page`, `${pageName} ${selectedModuleName}`);

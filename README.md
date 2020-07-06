@@ -14,6 +14,8 @@ Running `Execute Davinci command` allows you to run commands available from the 
 
 ### Generators
 
+![Alt Text](./demo.gif)
+
 Powered by [@toptal/davinci-code](https://www.npmjs.com/package/@toptal/davinci-code), which is part of [Davinci CLI](https://www.npmjs.com/package/@toptal/davinci-code).
 
 | Command       | Output                                                  |

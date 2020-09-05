@@ -10,7 +10,7 @@ Go to the link below and click `Install`.
 
 ### Davinci command execution
 
-Running `Execute Davinci command` allows you to run commands available from the [Davinci packages](https://www.npmjs.com/package/@toptal/davinci#packages).
+Running `Execute Davinci command` allows you to run commands available from the [Davinci CLI](https://www.npmjs.com/package/@toptal/davinci#packages).
 
 ### Generators
 
@@ -59,5 +59,5 @@ Using these commands will generate a folder structure in this format:
 
 ## CI
 
-- Version are automatically bumped. Read more [here](https://github.com/marketplace/actions/github-action-for-vsce)
+- Versions are automatically bumped. Read more [here](https://github.com/marketplace/actions/github-action-for-vsce)
 - [Automatic publishing](https://github.com/marketplace/actions/github-action-for-vsce) when a PR is merged to master thanks

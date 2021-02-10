@@ -13,7 +13,7 @@ const execScript = (pageName: string, moduleName: string) => {
   terminal.show();
 };
 
-const createPage = async () => {
+export const createPage = async () => {
   // Display a message box to the user
   const pageName = await vscode.window.showInputBox({
     prompt: "Enter page name",
@@ -36,5 +36,3 @@ const createPage = async () => {
 
   execScript(pageName, selectedModuleName || DEFAULT_MODULE_NAME);
 };
-
-export default createPage;

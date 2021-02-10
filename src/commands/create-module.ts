@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 
 import { createDavinciModule } from "../utils";
 
-const createModule = async () => {
+export const createModule = async () => {
   // Display a message box to the user
   const moduleName = await vscode.window.showInputBox({
     prompt: "Enter module name",
@@ -17,5 +17,3 @@ const createModule = async () => {
   terminal.sendText(createDavinciModule(moduleName), true);
   terminal.show();
 };
-
-export default createModule;

@@ -106,7 +106,7 @@ const DAVINCI_CLI: Record<DavinciPackageNames, DavinciQuickPick[]> = {
 
 const DAVINCI_CLI_PACKAGES = Object.keys(DAVINCI_CLI);
 
-const execDavinci = async () => {
+export const execDavinci = async () => {
   // Display a message box to the user
 
   const selectedDavinciPackage = await vscode.window.showQuickPick(

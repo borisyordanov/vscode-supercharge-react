@@ -16,7 +16,7 @@ const execScript = (componentName: string, selectedModuleName: string) => {
   terminal.show();
 };
 
-const createComponent = async () => {
+export const createComponent = async () => {
   // Display a message box to the user
   const componentName = await vscode.window.showInputBox({
     prompt: "Enter component name",
@@ -39,4 +39,3 @@ const createComponent = async () => {
 
   execScript(componentName, selectedModuleName || DEFAULT_MODULE_NAME);
 };
-export default createComponent;

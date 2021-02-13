@@ -1,7 +1,8 @@
-export type DavinciPackageNames =
-  | "ci"
-  | "qa"
-  | "engine"
-  | "code"
-  | "syntax"
-  | "bootstrap";
+export enum DavinciPackages {
+  ci = "ci",
+  qa = "qa",
+  engine = "engine",
+  code = "code",
+  syntax = "syntax",
+  bootstrap = "bootstrap",
+}

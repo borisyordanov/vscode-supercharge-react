@@ -1,41 +1,36 @@
-import * as vscode from "vscode";
+import { window } from "vscode";
 
 import {
   getAllModuleNames,
-  createDavinciComponent,
-  createDavinciModule,
+  createDavinciComponentCommand,
+  sendToTerminal,
 } from "../utils";
-import { DEFAULT_MODULE_NAME } from "../config";
-
-const execScript = (componentName: string, selectedModuleName: string) => {
-  const terminal = vscode.window.createTerminal();
-  terminal.sendText(
-    createDavinciComponent(componentName, selectedModuleName),
-    true
-  );
-  terminal.show();
-};
 
 export const createComponent = async () => {
-  // Display a message box to the user
-  const componentName = await vscode.window.showInputBox({
+  const componentName = await window.showInputBox({
     prompt: "Enter component name",
   });
 
   if (!componentName) {
-    vscode.window.showErrorMessage("Component name must be provided");
+    window.showErrorMessage("Component name must be provided");
     return;
   }
 
   const moduleNames = getAllModuleNames();
 
   if (!moduleNames.length) {
-    createDavinciModule(DEFAULT_MODULE_NAME);
-    execScript(componentName, DEFAULT_MODULE_NAME);
+    window.showInformationMessage(
+      "No modules were found, creating component in default module"
+    );
+    sendToTerminal(createDavinciComponentCommand(componentName));
     return;
   }
 
-  const selectedModuleName = await vscode.window.showQuickPick(moduleNames);
+  const selectedModuleName = await window.showQuickPick(moduleNames, {
+    placeHolder: "Press Enter to choose default module",
+  });
 
-  execScript(componentName, selectedModuleName || DEFAULT_MODULE_NAME);
+  sendToTerminal(
+    createDavinciComponentCommand(componentName, selectedModuleName)
+  );
 };

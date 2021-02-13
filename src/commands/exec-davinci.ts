@@ -1,28 +1,14 @@
-import * as vscode from "vscode";
-
-import { runDavinciCommand } from "../utils";
-import { QuickPickItem } from "vscode";
-import { DavinciPackageNames } from "../types";
-
-const execScript = (
-  packageName: string,
-  command: string,
-  options?: string | undefined
-) => {
-  const terminal = vscode.window.createTerminal();
-  terminal.sendText(
-    runDavinciCommand(packageName as DavinciPackageNames, command, options),
-    true
-  );
-  terminal.show();
-};
+import { sendToTerminal } from "./../utils/send-to-terminal";
+import { createDavinciTerminalCommand } from "../utils";
+import { QuickPickItem, window } from "vscode";
+import { DavinciPackages } from "../types";
 
 interface DavinciQuickPick extends QuickPickItem {
   options?: string;
 }
 
 // TODO: Convert options to quick picks
-const DAVINCI_CLI: Record<DavinciPackageNames, DavinciQuickPick[]> = {
+const DAVINCI_CLI: Record<DavinciPackages, DavinciQuickPick[]> = {
   ci: [{ label: "danger" }],
   qa: [
     {
@@ -106,35 +92,54 @@ const DAVINCI_CLI: Record<DavinciPackageNames, DavinciQuickPick[]> = {
 
 const DAVINCI_CLI_PACKAGES = Object.keys(DAVINCI_CLI);
 
+function isDavinciPackage(name: string): name is DavinciPackages {
+  return name in DavinciPackages;
+}
+
 export const execDavinci = async () => {
   // Display a message box to the user
 
-  const selectedDavinciPackage = await vscode.window.showQuickPick(
-    DAVINCI_CLI_PACKAGES
+  const selectedDavinciPackage = await window.showQuickPick(
+    DAVINCI_CLI_PACKAGES,
+    {
+      placeHolder: "Choose a package",
+    }
   );
 
-  if (!selectedDavinciPackage) {
-    vscode.window.showErrorMessage("Package must be selected");
+  if (!selectedDavinciPackage || !isDavinciPackage(selectedDavinciPackage!)) {
+    window.showErrorMessage("A valid package must be selected");
     return;
   }
 
-  const commandPicker = vscode.window.createQuickPick();
-  commandPicker.items =
-    DAVINCI_CLI[selectedDavinciPackage as DavinciPackageNames];
+  const commandPicker = window.createQuickPick<DavinciQuickPick>();
+  commandPicker.items = DAVINCI_CLI[selectedDavinciPackage];
+  commandPicker.placeholder = "Choose a command";
   commandPicker.show();
 
   commandPicker.onDidAccept(async () => {
-    const selectedCommand = commandPicker.selectedItems[0] as DavinciQuickPick;
+    const selectedCommand = commandPicker.selectedItems[0];
     if (!selectedCommand.options) {
-      execScript(selectedDavinciPackage, selectedCommand.label);
+      sendToTerminal(
+        createDavinciTerminalCommand(
+          selectedDavinciPackage,
+          selectedCommand.label
+        )
+      );
       return;
     }
 
-    const options = await vscode.window.showInputBox({
+    const options = await window.showInputBox({
       prompt: selectedCommand.options,
+      placeHolder: "Choose an option",
     });
 
-    execScript(selectedDavinciPackage, selectedCommand.label, options);
+    sendToTerminal(
+      createDavinciTerminalCommand(
+        selectedDavinciPackage,
+        selectedCommand.label,
+        options
+      )
+    );
   });
 };
 

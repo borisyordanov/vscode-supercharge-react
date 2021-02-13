@@ -1,26 +1,42 @@
-import { DavinciPackageNames } from "../types";
+import { DEFAULT_MODULE_NAME } from "../config";
+import { DavinciPackages } from "../types";
 
-export const runDavinciCommand = (
-  packageName: DavinciPackageNames,
+export const createDavinciTerminalCommand = (
+  packageName: DavinciPackages,
   command: string,
   options?: string
-): string => `npx @toptal/davinci ${packageName} ${command} ${options || ""}`;
+): string => {
+  const terminalCommand = `npx @toptal/davinci ${packageName} ${command}`;
 
-export const createDavinciModule = (moduleName: string): string =>
-  runDavinciCommand("code", `new module`, `${moduleName}`);
+  if (options) {
+    return `${terminalCommand} ${options}`;
+  }
+  return terminalCommand;
+};
 
-export const createDavinciComponent = (
+export const createDavinciModuleCommand = (moduleName = DEFAULT_MODULE_NAME) =>
+  createDavinciTerminalCommand(
+    DavinciPackages.code,
+    `new module`,
+    `${moduleName}`
+  );
+
+export const createDavinciComponentCommand = (
   componentName: string,
-  selectedModuleName: string
-): string =>
-  runDavinciCommand(
-    "code",
+  selectedModuleName = DEFAULT_MODULE_NAME
+) =>
+  createDavinciTerminalCommand(
+    DavinciPackages.code,
     `new component`,
     `${componentName} ${selectedModuleName}`
   );
 
-export const createDavinciPage = (
+export const createDavinciPageCommand = (
   pageName: string,
-  selectedModuleName: string
-): string =>
-  runDavinciCommand("code", `new page`, `${pageName} ${selectedModuleName}`);
+  selectedModuleName = DEFAULT_MODULE_NAME
+) =>
+  createDavinciTerminalCommand(
+    DavinciPackages.code,
+    `new page`,
+    `${pageName} ${selectedModuleName}`
+  );

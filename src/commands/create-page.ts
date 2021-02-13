@@ -1,38 +1,34 @@
-import * as vscode from "vscode";
+import { window } from "vscode";
 
 import {
   getAllModuleNames,
-  createDavinciModule,
-  createDavinciPage,
+  createDavinciPageCommand,
+  sendToTerminal,
 } from "../utils";
-import { DEFAULT_MODULE_NAME } from "../config";
-
-const execScript = (pageName: string, moduleName: string) => {
-  const terminal = vscode.window.createTerminal();
-  terminal.sendText(createDavinciPage(pageName, moduleName), true);
-  terminal.show();
-};
 
 export const createPage = async () => {
-  // Display a message box to the user
-  const pageName = await vscode.window.showInputBox({
+  const pageName = await window.showInputBox({
     prompt: "Enter page name",
   });
 
   if (!pageName) {
-    vscode.window.showErrorMessage("Page name must be provided");
+    window.showErrorMessage("Page name must be provided");
     return;
   }
 
   const moduleNames = getAllModuleNames();
 
   if (!moduleNames.length) {
-    createDavinciModule(DEFAULT_MODULE_NAME);
-    execScript(pageName, DEFAULT_MODULE_NAME);
+    window.showInformationMessage(
+      "No modules were found, creating page in default module"
+    );
+    sendToTerminal(createDavinciPageCommand(pageName));
     return;
   }
 
-  const selectedModuleName = await vscode.window.showQuickPick(moduleNames);
+  const selectedModuleName = await window.showQuickPick(moduleNames, {
+    placeHolder: "Press Enter to choose default module",
+  });
 
-  execScript(pageName, selectedModuleName || DEFAULT_MODULE_NAME);
+  sendToTerminal(createDavinciPageCommand(pageName, selectedModuleName));
 };

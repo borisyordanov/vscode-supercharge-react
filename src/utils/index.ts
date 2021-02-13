@@ -1,7 +1,8 @@
+export { sendToTerminal } from "./send-to-terminal";
 export { getAllModuleNames } from "./get-all-module-names";
 export {
-  runDavinciCommand,
-  createDavinciComponent,
-  createDavinciModule,
-  createDavinciPage,
+  createDavinciTerminalCommand,
+  createDavinciComponentCommand,
+  createDavinciModuleCommand,
+  createDavinciPageCommand,
 } from "./davinci";

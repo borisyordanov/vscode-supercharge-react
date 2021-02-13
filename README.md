@@ -2,11 +2,23 @@
 
 ## Installation
 
+---
+
 Go to the link below and click `Install`.
 
 [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=borisyordanov.sup-react)
 
+## Configuration
+
+---
+
+### supercharge.defaultModule (Default: 'core')
+
+The default module code is generated into.
+
 ## Commands
+
+---
 
 ### Davinci command execution
 
@@ -58,6 +70,8 @@ Using these commands will generate a folder structure in this format:
 ```
 
 ## CI
+
+---
 
 - Version are automatically bumped. Read more [here](https://github.com/marketplace/actions/github-action-for-vsce)
 - [Automatic publishing](https://github.com/marketplace/actions/github-action-for-vsce) when a PR is merged to master thanks

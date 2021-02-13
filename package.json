@@ -3,7 +3,7 @@
   "publisher": "borisyordanov",
   "displayName": "Supercharge React",
   "description": "",
-  "version": "0.7.0",
+  "version": "0.6.6",
   "engines": {
     "vscode": "^1.46.0"
   },
@@ -43,7 +43,18 @@
         "command": "sup-react.execDavinci",
         "title": "Execute Davinci command"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "supercharge",
+      "properties": {
+        "supercharge.defaultModule": {
+          "type": "string",
+          "default": "core",
+          "description": "Default module for code generation"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
